@@ -10,7 +10,81 @@ package simpleBoard;
 
 // 주어지는 것 : 매게변수 이차원 배열. 모든 학생이 가져가는 과일의 총 개수를 반환하는 프로그램을 만들면 됨
 
+import java.util.Scanner;
+
 public class BringFruit {
 
-    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("학생 수를 입력하세요: ");
+        int n = sc.nextInt();
+        int[][] fruitBag = new int[n][3];
+
+        System.out.println("학생별 바구니 정보를 입력하세요. (사과, 배, 귤)");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 3; j++) {
+                fruitBag[i][j] = sc.nextInt();
+            }
+        }
+
+        int total = totalFruit.exchangeF(fruitBag);
+        System.out.println("총 과일 개수: " + total);
+    }
+
+
+    static class totalFruit {
+
+        // 자신이 가져가는 바구니의 과일을 교환하지 않는다.
+        // 상대방이 가져가는 과일의 바구니와 내가 가져가는 과일의 바구니가 겹치면 안 됨.
+        // 배열을 순회하면서 교환가능한 첫 번 째 사람을 선택.
+
+        // 우선 배열을 돌면서 처음에 들고 가는 과일의 총함을 계산하고 변수에 저장
+        // 교환할 때 마다 total +!을 해서 total을 구한다.
+        public static int exchangeF(int[][] fruitBag) {
+
+            int n = fruitBag.length;
+            int[] initialChoice = new int[n];
+            int total = 0;
+
+            //step 1: 각 학생의 초기 선택
+            for (int i = 0; i < n; i++) {
+                int minIndex = 0;
+                for (int j = 0; j < 3; j++) {
+                    if (fruitBag[i][j] < fruitBag[i][minIndex]){
+                        minIndex = j;
+                }
+            }
+                initialChoice[i] = minIndex;
+                total += fruitBag[i][minIndex];
+
+            }
+
+            //교환 처리
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    int myFruit = fruitBag[i][initialChoice[i]];
+                    int theirFruit = fruitBag[j][initialChoice[j]];
+
+                    for (int myChoice = 0; myChoice < 3; myChoice++) {
+                        for (int theirChoice = 0; theirChoice < 3; theirChoice++) {
+                            if (myChoice == theirChoice) continue;
+                            int newMyFruit = fruitBag[i][myChoice];
+                            int newTheirFruit = fruitBag[j][theirChoice];
+
+                            if (newMyFruit > myFruit && newTheirFruit > theirFruit){
+                                initialChoice[i] = myChoice;
+                                initialChoice[j] =theirChoice;
+                                total += (newTheirFruit - myFruit) + (newTheirFruit - theirFruit);
+                                myFruit = newMyFruit;
+                                theirFruit = newTheirFruit;
+                            }
+                        }
+                    }
+                }
+            }
+            return total;
+        }
+    }
+
 }
+
