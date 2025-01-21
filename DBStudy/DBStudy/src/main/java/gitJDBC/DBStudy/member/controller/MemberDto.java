@@ -1,8 +1,15 @@
 package gitJDBC.DBStudy.member.controller;
 
-public class MemberDto {
-    public Object getEmail;
+import lombok.Getter;
 
-    public Object getPassword() {
-    }
+@Getter
+public class MemberDto {
+
+    private Long id;
+    private String password;
+    private String nickname;
+    private String name;
+    private String email;
+
+
 }
