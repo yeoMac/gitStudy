@@ -1,8 +1,9 @@
 package gitJDBC.DBStudy.member.controller;
 
 import lombok.Getter;
+import lombok.Setter;
 
-@Getter
+@Getter@Setter
 public class MemberDto {
 
     private Long id;

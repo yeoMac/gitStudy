@@ -1,7 +1,9 @@
 package gitJDBC.DBStudy.member.checkForm;
 
 import gitJDBC.DBStudy.member.repository.MemberRepository;
+import org.springframework.stereotype.Component;
 
+@Component
 public class validSignUp {
 
     private final MemberRepository memberRepository;
@@ -15,9 +17,14 @@ public class validSignUp {
 
     public void validEmail(String email) {
         if (email == null || !email.matches(validEmail)) {
-            throw new IllegalStateException("등록된 이메일입니다.");
+            throw new IllegalStateException("이메일 형식이 올바르지 않습니다.");
+        }
+
+        if (memberRepository.existsByEmail(email)) {
+            throw new IllegalStateException("이미 등록된 이메일입니다.");
         }
     }
+
 
     public void validPassword(String password) {
         if (password == null || password.length() < 8 || !password.matches(validPassword)) {

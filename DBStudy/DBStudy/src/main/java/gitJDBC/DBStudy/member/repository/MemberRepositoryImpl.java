@@ -6,12 +6,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator;
 import org.springframework.jdbc.support.SQLExceptionTranslator;
+import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.Date;
 
 @Slf4j
+@Repository()
 public class MemberRepositoryImpl implements MemberRepository{
 
     private final DataSource dataSource;
@@ -70,6 +72,19 @@ public class MemberRepositoryImpl implements MemberRepository{
 
     @Override
     public boolean existsByEmail(String email) {
+        String sql = "SELECT COUNT(*) FROM MEMBER WHERE email = ?";
+        try (Connection con = getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1, email);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            throw exTranslator.translate("existsByEmail", sql, e);
+        }
         return false;
     }
+
 }
