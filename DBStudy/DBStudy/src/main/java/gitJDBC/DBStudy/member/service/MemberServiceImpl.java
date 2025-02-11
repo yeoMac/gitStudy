@@ -1,5 +1,6 @@
 package gitJDBC.DBStudy.member.service;
 
+import gitJDBC.DBStudy.member.checkForm.validSignUp;
 import gitJDBC.DBStudy.member.controller.MemberDto;
 import gitJDBC.DBStudy.member.entity.Member;
 import gitJDBC.DBStudy.member.repository.MemberRepository;
@@ -7,28 +8,34 @@ import gitJDBC.DBStudy.member.repository.MemberRepository;
 public class MemberServiceImpl implements MemberService{
 
     private final MemberRepository memberRepository;
+    private final validSignUp validSignUp;
 
-    public MemberServiceImpl(MemberRepository memberRepository) {
+    public MemberServiceImpl(MemberRepository memberRepository, validSignUp validSignUp) {
         this.memberRepository = memberRepository;
+        this.validSignUp = validSignUp;
     }
 
     @Override
     public Member signUp(MemberDto memberDto) {
 
-        checkSingUp(memberDto);
-        Member member = memberToDto(memberDto);
+        validSignUp.validEmail(memberDto.getEmail());
+        validSignUp.validPassword(memberDto.getPassword());
+
+        Member member = toDto(memberDto);
+
         return memberRepository.saveMember(member);
 
     }
 
-    private Member memberToDto(MemberDto memberDto) {
+    private Member toDto(MemberDto memberDto) {
 
-        Member member = new Member();
+        return new Member(null
+                ,memberDto.getPassword()
+                ,memberDto.getEmail()
+                ,memberDto.getName(),
+                memberDto.getNickname(),
+                null);
     }
 
-    private void checkSingUp(MemberDto memberDto){
-        if (memberDto.getEmail()==memberRepository.findEmailById(memberDto.getId())){
 
-        }
-    }
 }
