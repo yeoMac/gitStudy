@@ -5,28 +5,24 @@ import java.util.Map;
 
 public class firstNumberV1 {
     public static void main(String[] args) {
-
-        String input = "statitsics";
-        String[] arr = new String[input.length()];
-
-        for (int i = 0; i < input.length(); i++) {
-            arr[i] = String.valueOf(input.charAt(i));
-        }
-
-        int result = answer(arr);
-        System.out.println(result);
+        System.out.println(getFirstUniqueIndex("statitsics")); // 3
+        System.out.println(getFirstUniqueIndex("aabb")); // -1
+        System.out.println(getFirstUniqueIndex("stringshowtime")); // 3
+        System.out.println(getFirstUniqueIndex("abcdeabcdfg")); // 5
     }
 
-    private static int answer(String[] arr) {
+    private static int getFirstUniqueIndex(String s) {
 
-
-        Map<Integer, String[]> point = new HashMap<>();
-        for (int i = 0; i < arr.length; i++) {
-            String[] strings = point.get(i);
-            point.put(i, strings);
+        Map<Character, Integer> freq = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            freq.put(c, freq.getOrDefault(c, 0) + 1);
         }
 
-
-        return 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (freq.get(s.charAt(i)) == 1) {
+                return i;
+            }
+        }
+        return -1;
     }
 }
