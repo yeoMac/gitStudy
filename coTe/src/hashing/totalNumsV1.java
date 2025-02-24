@@ -5,8 +5,8 @@ import java.util.Map;
 
 class TotalNums {
     public static void main(String[] args) {
-        int[] nums = {-1, 0, 1};
-        int m = 0;
+        int[] nums = {2, 2, 3, -1, -1, -1, 3, 1, 1};
+        int m = 5;
 
         System.out.println(countSubarrays(nums, m));
     }
