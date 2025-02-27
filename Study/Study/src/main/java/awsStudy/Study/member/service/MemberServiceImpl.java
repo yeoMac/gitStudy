@@ -5,7 +5,6 @@ import awsStudy.Study.member.entity.Member;
 import awsStudy.Study.member.repository.MemberRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
