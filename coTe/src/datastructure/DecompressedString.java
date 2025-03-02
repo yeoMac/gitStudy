@@ -22,10 +22,10 @@ public class DecompressedString {
                     a = a + pop;
 
                 }
-                if ()
             }
             stack.push(String.valueOf(c));
         }
+        return null;
     }
 
 }
