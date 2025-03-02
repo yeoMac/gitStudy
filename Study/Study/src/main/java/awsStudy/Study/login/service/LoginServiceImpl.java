@@ -16,12 +16,10 @@ public class LoginServiceImpl implements LoginService {
     public Member login(LoginDto dto) {
         //추후에 검증 절차 넣을 예정
 
-        toentity(dto);
-        return memberRepository.ckeckInform();
+        Member member = LoginDto.toEntity(dto);
+        return memberRepository.();
     }
 
-    private Member toentity(LoginDto dto) {
-        return null;
-    }
+
 
 }

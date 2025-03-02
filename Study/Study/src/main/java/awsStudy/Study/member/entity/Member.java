@@ -2,6 +2,7 @@ package awsStudy.Study.member.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -24,6 +25,7 @@ public class Member {
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Builder
     public Member(String password, String nickname, String email) {
         this.password = password;
         this.nickname = nickname;
