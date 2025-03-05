@@ -10,7 +10,6 @@ public class LoginDto {
     private String email;
     private String password;
 
-    @Builder
     public LoginDto(String email, String password) {
         this.email = email;
         this.password = password;

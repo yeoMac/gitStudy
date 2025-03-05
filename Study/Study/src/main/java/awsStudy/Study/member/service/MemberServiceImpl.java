@@ -18,14 +18,10 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public Member signup(MemberDto dto) {
         //일단 검증 작업 생략(일단 빠르게 배포하는 게 우선 사항)
-        Member member = toEntity(dto);
+        Member member = MemberDto.toEntity(dto);
         return memberRepository.save(member);
 
     }
 
-    private Member toEntity(MemberDto dto) {
 
-        //일단 id, nickname, email, password만
-        return new Member(null, dto.getNickname(), dto.getEmail(), dto.getPassword());
-    }
 }

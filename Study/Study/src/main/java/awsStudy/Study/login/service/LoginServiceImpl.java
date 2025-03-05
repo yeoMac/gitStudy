@@ -17,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
         //추후에 검증 절차 넣을 예정
 
         Member member = LoginDto.toEntity(dto);
-        return memberRepository.();
+        return null;
     }
 
 

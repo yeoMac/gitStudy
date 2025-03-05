@@ -16,7 +16,7 @@ public class Member {
     @Id
     @GeneratedValue
     @Column(name = "member_id")
-    private Long memberId;
+    private Long id;
 
     @Column(nullable = false)
     private String password;
@@ -31,4 +31,6 @@ public class Member {
         this.nickname = nickname;
         this.email = email;
     }
+
+
 }
