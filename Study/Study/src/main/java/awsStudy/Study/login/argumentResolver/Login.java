@@ -1,4 +1,4 @@
-package awsStudy.Study.login.ArgumentResolver;
+package awsStudy.Study.login.argumentResolver;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

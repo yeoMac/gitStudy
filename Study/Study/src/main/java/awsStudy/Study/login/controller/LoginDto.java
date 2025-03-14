@@ -1,7 +1,6 @@
 package awsStudy.Study.login.controller;
 
 import awsStudy.Study.member.entity.Member;
-import lombok.Builder;
 import lombok.Getter;
 
 @Getter
