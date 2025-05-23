@@ -1,6 +1,6 @@
-package awsStudy.Study.board.repository;
+package awsStudy.Study.communication.board.repository;
 
-import awsStudy.Study.board.entity.Board;
+import awsStudy.Study.communication.entity.Board;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

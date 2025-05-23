@@ -1,7 +1,7 @@
-package awsStudy.Study.board.category.service;
+package awsStudy.Study.communication.category.service;
 
-import awsStudy.Study.board.repository.CategoryRepository;
-import awsStudy.Study.board.entity.Category;
+import awsStudy.Study.communication.category.repository.CategoryRepository;
+import awsStudy.Study.communication.entity.Category;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

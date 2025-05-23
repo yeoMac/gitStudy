@@ -1,7 +1,7 @@
 package awsStudy.Study.member.entity;
 
-import awsStudy.Study.board.entity.Board;
-import awsStudy.Study.board.entity.Category;
+import awsStudy.Study.communication.entity.Board;
+import awsStudy.Study.communication.entity.Category;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

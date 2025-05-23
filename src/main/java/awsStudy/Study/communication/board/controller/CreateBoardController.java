@@ -1,7 +1,7 @@
-package awsStudy.Study.board.controller;
+package awsStudy.Study.communication.board.controller;
 
 
-import awsStudy.Study.board.service.BoardService;
+import awsStudy.Study.communication.board.service.BoardService;
 import awsStudy.Study.login.argumentResolver.Login;
 import awsStudy.Study.login.session.SessionDto;
 import lombok.RequiredArgsConstructor;

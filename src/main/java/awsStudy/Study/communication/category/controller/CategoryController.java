@@ -1,7 +1,7 @@
-package awsStudy.Study.board.category.controller;
+package awsStudy.Study.communication.category.controller;
 
-import awsStudy.Study.board.category.service.CategoryService;
-import awsStudy.Study.board.entity.Category;
+import awsStudy.Study.communication.category.service.CategoryService;
+import awsStudy.Study.communication.entity.Category;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +22,8 @@ public class CategoryController {
     @PostMapping
     public ResponseEntity<Category> createCategory(@RequestBody CategoryDto dto, BindingResult bindingResult) {
 
+        Category category = Category.builder().name(dto.getName()).build();
+
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body((Category) bindingResult.getAllErrors());
         }
@@ -29,7 +31,6 @@ public class CategoryController {
 
         log.info("게시판 생성 요청 {}", dto.toString());
 
-        Category category = Category.builder().name(dto.getName()).build();
         return ResponseEntity.ok().body(categoryService.create(category));
     }
 }

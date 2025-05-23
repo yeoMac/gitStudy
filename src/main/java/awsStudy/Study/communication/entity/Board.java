@@ -1,10 +1,8 @@
-package awsStudy.Study.board.entity;
+package awsStudy.Study.communication.entity;
 
 import awsStudy.Study.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 

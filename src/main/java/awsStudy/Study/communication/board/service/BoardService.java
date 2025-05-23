@@ -1,10 +1,10 @@
-package awsStudy.Study.board.service;
+package awsStudy.Study.communication.board.service;
 
-import awsStudy.Study.board.controller.BoardDto;
-import awsStudy.Study.board.entity.Board;
-import awsStudy.Study.board.entity.Category;
-import awsStudy.Study.board.repository.BoardRepository;
-import awsStudy.Study.board.repository.CategoryRepository;
+import awsStudy.Study.communication.board.controller.BoardDto;
+import awsStudy.Study.communication.entity.Board;
+import awsStudy.Study.communication.entity.Category;
+import awsStudy.Study.communication.board.repository.BoardRepository;
+import awsStudy.Study.communication.category.repository.CategoryRepository;
 import awsStudy.Study.login.session.SessionDto;
 import awsStudy.Study.member.entity.Member;
 import awsStudy.Study.member.repository.MemberRepository;
@@ -35,6 +35,7 @@ public class BoardService {
                 .member(member)
                 .category(category)
                 .build();
+
         return boardRepository.save(board);
     }
 }

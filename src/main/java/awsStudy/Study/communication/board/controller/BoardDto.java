@@ -1,4 +1,4 @@
-package awsStudy.Study.board.controller;
+package awsStudy.Study.communication.board.controller;
 
 import lombok.Getter;
 
