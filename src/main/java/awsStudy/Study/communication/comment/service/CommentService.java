@@ -30,11 +30,18 @@ public class CommentService {
 
         Comment parent = null;
         if (dto.getParentId() != null) {
-            parent = commentRepository.findById(dto.getParentId())
+             parent = commentRepository.findById(dto.getParentId())
                     .orElseThrow(() -> new RuntimeException("부모 댓글이 존재하지 않습니다."));
+
+            if (parent.getParent() != null) {
+                //대대댓글 막기
+                throw new RuntimeException("대대댓글은 허용 안 됩니다.");
+            }
+
         }
-        Comment comment = Comment.builder().content(dto.getContent()).
-                member(member).board(board).parent(parent).
+
+        Comment comment = Comment.builder().
+                content(dto.getContent()).member(member).board(board).parent(parent).
                 build();
 
         return commentRepository.save(comment);

@@ -3,11 +3,13 @@ package awsStudy.Study.communication.entity;
 import awsStudy.Study.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.Builder;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @Entity
 public class Comment {
 
