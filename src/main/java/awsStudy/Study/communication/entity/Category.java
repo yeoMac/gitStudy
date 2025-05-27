@@ -16,7 +16,6 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-
     String name;
 
     @OneToMany(mappedBy = "category")
@@ -25,8 +24,6 @@ public class Category {
     @ManyToOne
     private Member member;
 
-
-
     @Builder
     public Category(Long id, String name, List<Board> boards, Member member) {
         this.id = id;
@@ -34,4 +31,5 @@ public class Category {
         this.boards = boards;
         this.member = member;
     }
+
 }
