@@ -14,14 +14,17 @@ import java.util.List;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "category_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
+    @Column(name = "name")
     String name;
 
     @OneToMany(mappedBy = "category")
     private List<Board> boards;
 
     @ManyToOne
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @Builder

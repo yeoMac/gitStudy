@@ -9,16 +9,18 @@ import java.time.LocalDateTime;
 @Entity
 public class Board {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "board_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-
+    @Column(nullable = false, name = "title")
     String title;
-
+    @Column(name = "story")
     String story;
-
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
-
+    @Column(name = "created_at")
+    private LocalDateTime created_at;
+    @Column(name = "updated_at")
+    private LocalDateTime updated_at;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -47,12 +49,12 @@ public class Board {
 
     @PrePersist
     public void onCreate() {
-        this.createdAt = LocalDateTime.now();
-        this.updatedAt = this.createdAt;
+        this.created_at = LocalDateTime.now();
+        this.updated_at = this.created_at;
     }
 
     @PreUpdate
     public void onUpdate() {
-        this.updatedAt = LocalDateTime.now();
+        this.updated_at = LocalDateTime.now();
     }
 }

@@ -29,7 +29,7 @@ public class CategoryController {
         }
 
 
-        log.info("게시판 생성 요청 {}", dto.toString());
+        log.info("카테고리 생성 요청 {}", dto.toString());
 
         return ResponseEntity.ok().body(categoryService.create(category));
     }

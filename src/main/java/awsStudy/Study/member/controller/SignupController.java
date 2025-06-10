@@ -24,7 +24,7 @@ public class SignupController {
 
 
 
-
+ 
             log.info("회원가입 요청: {}", dto);
             Member saved = memberService.signup(dto);
             return ResponseEntity.ok(new SignupResponseDto(saved));

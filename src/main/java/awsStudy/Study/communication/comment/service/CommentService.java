@@ -26,7 +26,8 @@ public class CommentService {
         Member member = memberRepository.findById(sessionDto.getId()).
                 orElseThrow(()->new RuntimeException("회원 정보 없음"));
 
-        Board board = boardRepository.findById(dto.getBoardId()).orElseThrow(() -> new RuntimeException("게시판이 존재하지 않습니다."));
+        Board board = boardRepository.findById(dto.getBoardId()).
+                orElseThrow(() -> new RuntimeException("게시판이 존재하지 않습니다."));
 
         Comment parent = null;
         if (dto.getParentId() != null) {

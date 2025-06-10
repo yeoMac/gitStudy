@@ -22,12 +22,13 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @Column(nullable = false)
-    private String password;
-    @Column(nullable = false, unique = true)
-    private String nickname;
-    @Column(nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
+    @Column(name = "password", nullable = false)
+    private String password;
+    @Column(name = "nickname", nullable = false, unique = true)
+    private String nickname;
+
 
     @OneToMany(mappedBy = "member")
     private List<Board> boardList;

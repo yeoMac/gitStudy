@@ -17,14 +17,22 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
     Long id;
-
+    @Column(name = "content", nullable = false)
     private String content;
-    private LocalDateTime createdAt;
+    @Column(name = "created_at")
+    private LocalDateTime created_at;
+
+    @Column(name = "ref")
+    private Long ref;
+    @Column(name = "step")
+    private Integer step;
+    @Column(name = "ref_order")
+    private Long refOrder;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
