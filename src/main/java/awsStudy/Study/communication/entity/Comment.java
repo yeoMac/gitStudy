@@ -2,8 +2,10 @@ package awsStudy.Study.communication.entity;
 
 import awsStudy.Study.member.entity.Member;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -11,6 +13,9 @@ import java.util.List;
 
 @Getter
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Comment {
 
     @Id
@@ -51,15 +56,5 @@ public class Comment {
         child.parent = this;
     }
 
-    public Comment() {
-    }
-
-    @Builder
-    public Comment(String content, Member member, Board board, Comment parent) {
-        this.content = content;
-        this.member = member;
-        this.board = board;
-        this.parent = parent;
-    }
 
 }

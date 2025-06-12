@@ -9,10 +9,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -31,5 +30,10 @@ public class CRUDCommentController {
         }
 
         return ResponseEntity.ok(commentService.createComment(commentDto,sessionDto));
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<CommentResponseDto>> getComments(@RequestParam Long boardId){
+        return ResponseEntity.ok(commentService.getCommentsByBoard(boardId));
     }
 }
